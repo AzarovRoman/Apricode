@@ -7,5 +7,6 @@ namespace ApriCode.Bll.Services.Interfaces
         Task<int> AddGame(GameModel model);
         Task<GameModel> GetGameById(int id);
         Task DeleteGameById(int id);
+        Task UpdateModelById(int id, GameModel model);
     }
 }

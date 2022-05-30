@@ -7,5 +7,6 @@ namespace ApriCode.Dal.Repositories.Interfaces
         Task<int> AddGame(Game game);
         Task<Game> GetGameById(int id);
         Task DeleteGame(Game game);
+        Task UpdateGame(Game game);
     }
 }

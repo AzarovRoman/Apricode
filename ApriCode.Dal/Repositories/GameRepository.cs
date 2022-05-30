@@ -29,5 +29,11 @@ namespace ApriCode.Dal.Repositories
             _context.Game.Remove(game);
             _context.SaveChanges();
         }
+
+        public async Task UpdateGame(Game game)
+        {
+            _context.Update(game);
+            _context.SaveChanges();
+        }
     }
 }

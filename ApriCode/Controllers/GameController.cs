@@ -40,5 +40,12 @@ namespace ApriCode.Controllers
             await _gameService.DeleteGameById(id);
             return new OkResult();
         }
+
+        [HttpPost("update/{id}")]
+        public async Task<ActionResult> UpdateGameById(int id, UpdateGameRequest model)
+        {
+            await _gameService.UpdateModelById(id, _mapper.Map<GameModel>(model));
+            return new OkResult();
+        }
     }
 }

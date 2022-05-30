@@ -45,5 +45,20 @@ namespace ApriCode.Bll.Services
 
             await _gameRepository.DeleteGame(game);
         }
+
+        public async Task UpdateModelById(int id, GameModel model)
+        {
+            var game = await _gameRepository.GetGameById(id);
+
+            if (game is null)
+            {
+                throw new NotFoundException($"Нет игры с id = {id}");
+            }
+
+            game.Name = model.Name;
+            game.Publisher = model.Publisher;
+
+            await _gameRepository.UpdateGame(game);
+        }
     }
 }

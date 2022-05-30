@@ -11,6 +11,7 @@ namespace ApriCode.Config
         {
             CreateMap<GameModel, GameResponse>();
             CreateMap<AddGameRequest, GameModel>();
+            CreateMap<UpdateGameRequest, GameModel>();
 
             CreateMap<GenreModel, GenreResponse>();
         }
