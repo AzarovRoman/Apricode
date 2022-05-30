@@ -10,11 +10,13 @@ namespace ApriCode.Extencions
         public static void RegisterProjectRepositories(this IServiceCollection services)
         {
             services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
         }
 
         public static void RegisterProjectServices(this IServiceCollection services)
         {
             services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IGenreService, GenreService>();
         }
     }
 }
