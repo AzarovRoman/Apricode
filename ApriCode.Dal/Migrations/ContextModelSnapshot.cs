@@ -39,7 +39,7 @@ namespace ApriCode.Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Game");
+                    b.ToTable("Game", (string)null);
                 });
 
             modelBuilder.Entity("ApriCode.Dal.Entities.Genre", b =>
@@ -56,7 +56,7 @@ namespace ApriCode.Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre");
+                    b.ToTable("Genre", (string)null);
                 });
 
             modelBuilder.Entity("GameGenre", b =>
@@ -71,7 +71,7 @@ namespace ApriCode.Dal.Migrations
 
                     b.HasIndex("GenresId");
 
-                    b.ToTable("GameGenre");
+                    b.ToTable("GameGenre", (string)null);
                 });
 
             modelBuilder.Entity("GameGenre", b =>

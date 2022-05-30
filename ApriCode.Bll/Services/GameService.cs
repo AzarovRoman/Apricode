@@ -79,12 +79,38 @@ namespace ApriCode.Bll.Services
                 throw new NotFoundException($"Нет игры с id = {gameId}");
             }
 
+            // убрать это
+            //if (game.Genres is null)
+            //{
+            //    game.Genres = new List<Genre>();
+            //}
+
+            _gameRepository.AddGenreInGame(game, genre);
+        }
+
+        public async Task DeleteGenreInGameById(int gameId, int genreId)
+        {
+            var game = await _gameRepository.GetGameById(gameId);
+
+            var genre = await _genreRepository.GetGenreById(genreId);
+
+            if (genre is null)
+            {
+                throw new NotFoundException($"Нет жанра с id = {genreId}");
+            }
+
+            if (game is null)
+            {
+                throw new NotFoundException($"Нет игры с id = {gameId}");
+            }
+
+            // убрать это
             if (game.Genres is null)
             {
                 game.Genres = new List<Genre>();
             }
 
-            _gameRepository.AddGenreInGame(game, genre);
+            _gameRepository.DeleteGenreInGame(game, genre);
         }
     }
 }
