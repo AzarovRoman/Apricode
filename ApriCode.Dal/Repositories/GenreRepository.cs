@@ -1,5 +1,6 @@
 ﻿using ApriCode.Dal.Entities;
 using ApriCode.Dal.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApriCode.Dal.Repositories
 {
@@ -17,6 +18,11 @@ namespace ApriCode.Dal.Repositories
             await _context.Genre.AddAsync(genre);
             _context.SaveChanges();
             return genre.Id;
+        }
+
+        public async Task<Genre> GetGenreById(int id)
+        {
+            return await _context.Genre.FirstOrDefaultAsync(g => g.Id == id);
         }
     }
 }

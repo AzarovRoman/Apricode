@@ -47,5 +47,12 @@ namespace ApriCode.Controllers
             await _gameService.UpdateModelById(id, _mapper.Map<GameModel>(model));
             return new OkResult();
         }
+
+        [HttpPatch("{gameId}/add-genre/{genreId}")]
+        public async Task<ActionResult> AddGenreInGameById(int gameId, int genreId)
+        {
+            await _gameService.AddGenreInGameById(gameId, genreId);
+            return new OkResult();
+        }
     }
 }

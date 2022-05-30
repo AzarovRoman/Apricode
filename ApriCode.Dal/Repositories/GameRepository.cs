@@ -35,5 +35,11 @@ namespace ApriCode.Dal.Repositories
             _context.Update(game);
             _context.SaveChanges();
         }
+
+        public async Task AddGenreInGame(Game game, Genre genre)
+        {
+            game.Genres.Add(genre);
+            _context.SaveChanges();
+        }
     }
 }
