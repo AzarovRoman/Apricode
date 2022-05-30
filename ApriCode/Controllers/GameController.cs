@@ -26,5 +26,19 @@ namespace ApriCode.Controllers
             int id = await _gameService.AddGame(_mapper.Map<GameModel>(game));
             return id;
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GameResponse>> GetGameById(int id)
+        {
+            var game = await _gameService.GetGameById(id);
+            return _mapper.Map<GameResponse>(game);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteGameById(int id)
+        {
+            await _gameService.DeleteGameById(id);
+            return new OkResult();
+        }
     }
 }

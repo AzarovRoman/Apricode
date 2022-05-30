@@ -1,4 +1,5 @@
-﻿using ApriCode.Bll.Models;
+﻿using ApriCode.Bll.Exceptions;
+using ApriCode.Bll.Models;
 using ApriCode.Bll.Services.Interfaces;
 using ApriCode.Dal.Entities;
 using ApriCode.Dal.Repositories.Interfaces;
@@ -19,6 +20,30 @@ namespace ApriCode.Bll.Services
         public async Task<int> AddGame(GameModel model)
         {
             return await _gameRepository.AddGame(_mapper.Map<Game>(model));
+        }
+
+        public async Task<GameModel> GetGameById(int id)
+        {
+            var game =  await _gameRepository.GetGameById(id);
+
+            if (game is null)
+            {
+                throw new NotFoundException($"Нет игры с id = {id}");
+            }
+
+            return _mapper.Map<GameModel>(game);
+        }
+
+        public async Task DeleteGameById(int id)
+        {
+            var game = await _gameRepository.GetGameById(id);
+
+            if (game is null)
+            {
+                throw new NotFoundException($"Нет игры с id = {id}");
+            }
+
+            await _gameRepository.DeleteGame(game);
         }
     }
 }
