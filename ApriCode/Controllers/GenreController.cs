@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApriCode.Controllers
 {
-    [ApiController]
+    [Controller]
     [Route("api/[controller]")]
     public class GenreController : Controller
     {
