@@ -40,5 +40,12 @@ namespace ApriCode.Controllers
             var genre = await _genreService.GetGenreById(id);
             return Ok(genre);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteGenreById(int id)
+        {
+            await _genreService.DeleteGenreById(id);
+            return Ok();
+        }
     }
 }

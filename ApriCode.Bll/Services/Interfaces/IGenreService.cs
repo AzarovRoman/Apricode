@@ -7,5 +7,6 @@ namespace ApriCode.Bll.Services.Interfaces
         Task<int> AddGenre(GenreModel model);
         Task UpdateGenreById(int id, GenreModel model);
         Task<GenreModel> GetGenreById(int id);
+        Task DeleteGenreById(int id);
     }
 }

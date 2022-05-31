@@ -7,5 +7,6 @@ namespace ApriCode.Dal.Repositories.Interfaces
         Task<int> AddGenre(Genre genre);
         Task<Genre> GetGenreById(int id);
         Task UpdateGenre(Genre genre);
+        Task DeleteGenre(Genre genre);
     }
 }

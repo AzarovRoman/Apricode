@@ -30,5 +30,11 @@ namespace ApriCode.Dal.Repositories
             _context.Genre.Update(genre);
             _context.SaveChanges();
         }
+
+        public async Task DeleteGenre(Genre genre)
+        {
+            _context.Genre.Remove(genre);
+            _context.SaveChanges();
+        }
     }
 }

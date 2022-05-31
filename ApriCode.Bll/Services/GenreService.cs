@@ -48,5 +48,17 @@ namespace ApriCode.Bll.Services
 
             return _mapper.Map<GenreModel>(genre);
         }
+
+        public async Task DeleteGenreById(int id)
+        {
+            var genre = await _genreRepository.GetGenreById(id);
+
+            if (genre is null)
+            {
+                throw new NotFoundException($"Нет жанра с id = {id}");
+            }
+
+            await _genreRepository.DeleteGenre(genre);
+        }
     }
 }
