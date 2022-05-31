@@ -47,5 +47,14 @@ namespace ApriCode.Dal.Repositories
             game.Genres.Remove(genre);
             _context.SaveChanges();
         }
+
+        public async Task<List<Game>> GetGamesByGenre(Genre genre)
+        {
+            List<Game> games = await _context.Game
+                .Where(g => g.Genres.Contains(genre))
+                .Include(g => g.Genres)
+                .ToListAsync();
+            return games;
+        }
     }
 }

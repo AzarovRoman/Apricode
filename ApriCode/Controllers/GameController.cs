@@ -61,5 +61,12 @@ namespace ApriCode.Controllers
             await _gameService.DeleteGenreInGameById(gameId, genreId);
             return Ok();
         }
+
+        [HttpGet("by-genre/{id}")]
+        public async Task<ActionResult<List<GameResponse>>> GetGamesByGenreId(int id)
+        {
+            var games = await _gameService.GetGamesByGenreId(id);
+            return Ok(games);
+        }
     }
 }

@@ -100,5 +100,18 @@ namespace ApriCode.Bll.Services
 
             _gameRepository.DeleteGenreInGame(game, genre);
         }
+
+        public async Task<List<GameModel>> GetGamesByGenreId(int genreId)
+        {
+            var genre = await _genreRepository.GetGenreById(genreId);
+
+            if (genre is null)
+            {
+                throw new NotFoundException($"Нет жанра с id = {genreId}");
+            }
+
+            var games = await _gameRepository.GetGamesByGenre(_mapper.Map<Genre>(genre));
+            return _mapper.Map<List<GameModel>>(games);
+        }
     }
 }

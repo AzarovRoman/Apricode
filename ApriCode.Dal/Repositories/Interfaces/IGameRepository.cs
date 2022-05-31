@@ -10,5 +10,6 @@ namespace ApriCode.Dal.Repositories.Interfaces
         Task UpdateGame(Game game);
         Task AddGenreInGame(Game game, Genre genre);
         Task DeleteGenreInGame(Game game, Genre genre);
+        Task<List<Game>> GetGamesByGenre(Genre genre);
     }
 }
