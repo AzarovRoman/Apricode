@@ -1,6 +1,7 @@
 ﻿using ApriCode.Bll.Models;
 using ApriCode.Bll.Services.Interfaces;
 using ApriCode.Models.Request;
+using ApriCode.Models.Response;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,22 @@ namespace ApriCode.Controllers
         [HttpPost]
         public async Task<ActionResult<int>> AddGenre(AddGenreRequest genre)
         {
-            return await _genreService.AddGenre(_mapper.Map<GenreModel>(genre));
+            var id = await _genreService.AddGenre(_mapper.Map<GenreModel>(genre));
+            return Ok(id);
+        }
+
+        [HttpPatch]
+        public async Task<ActionResult> UpdateGenreById(int id, UpdateGenreRequest model)
+        {
+            await _genreService.UpdateGenreById(id, _mapper.Map<GenreModel>(model));
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GenreResponse>> GetGenreById(int id)
+        {
+            var genre = await _genreService.GetGenreById(id);
+            return Ok(genre);
         }
     }
 }

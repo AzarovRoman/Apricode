@@ -32,7 +32,7 @@ namespace ApriCode.Dal.Repositories
 
         public async Task UpdateGame(Game game)
         {
-            _context.Update(game);
+            _context.Game.Update(game);
             _context.SaveChanges();
         }
 

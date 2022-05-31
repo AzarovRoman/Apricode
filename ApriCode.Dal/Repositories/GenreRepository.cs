@@ -24,5 +24,11 @@ namespace ApriCode.Dal.Repositories
         {
             return await _context.Genre.FirstOrDefaultAsync(g => g.Id == id);
         }
+
+        public async Task UpdateGenre(Genre genre)
+        {
+            _context.Genre.Update(genre);
+            _context.SaveChanges();
+        }
     }
 }
