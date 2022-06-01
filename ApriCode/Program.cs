@@ -13,7 +13,7 @@ const string? _connString = "CON_STRING";
 var connString = builder.Configuration.GetValue<string>(_connString);
 
 builder.Services.AddDbContext<Context>(op =>
-            op.UseSqlServer(connString));
+            op.UseSqlServer(connString).UseLazyLoadingProxies());
 
 builder.Services.RegisterProjectRepositories();
 builder.Services.RegisterProjectServices();

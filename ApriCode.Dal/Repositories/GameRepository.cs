@@ -21,7 +21,7 @@ namespace ApriCode.Dal.Repositories
 
         public async Task<Game> GetGameById(int id)
         {
-            return await _context.Game.Where(g => g.Id == id).Include(g => g.Genres).FirstOrDefaultAsync();
+            return await _context.Game.FirstOrDefaultAsync(g => g.Id == id);
         }
 
         public async Task DeleteGame(Game game)
@@ -52,8 +52,8 @@ namespace ApriCode.Dal.Repositories
         {
             List<Game> games = await _context.Game
                 .Where(g => g.Genres.Contains(genre))
-                .Include(g => g.Genres)
                 .ToListAsync();
+
             return games;
         }
     }
